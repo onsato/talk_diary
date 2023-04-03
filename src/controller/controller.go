@@ -1,6 +1,7 @@
 package controller
 
 import (
+	"net/http"
 	"src/model"
 	"src/service"
 
@@ -8,30 +9,49 @@ import (
 )
 
 type DairyController interface {
-	Save(c *gin.Context) model.Dairies
-	Show(c *gin.Context) model.Dairies
+	Save(c *gin.Context) model.Diary
+	Show(c *gin.Context) model.Diary
 }
 
 type controller struct {
 	service service.DairyService
 }
 
-func New(service service.DairyService) DairyController {
-	return &controller{
-		service: service,
-	}
+func ShowHome(c *gin.Context) {
+	c.HTML(http.StatusOK, "index.html", gin.H{})
 }
 
-func (ctr *controller) Save(c *gin.Context) model.Dairies {
-	var dairy model.Dairies
-	c.BindJSON(&dairy)
-	ctr.service.Save(dairy)
-	return dairy
+func ShowList(c *gin.Context) {
+	c.HTML(http.StatusOK, "list.html", gin.H{
+		"id":    1,
+		"title": "sample",
+	})
 }
 
-func (ctr *controller) Show(c *gin.Context) model.Dairies {
-	var dairy model.Dairies
-	c.BindJSON(&dairy)
-	ctr.service.Show(dairy)
-	return dairy
+func CreateDairy(c *gin.Context) {
+
 }
+
+func SaveDiary(c *gin.Context) {
+
+}
+
+// func CreateNew(service service.DairyService) DairyController {
+// 	return &controller{
+// 		service: service,
+// 	}
+// }
+
+// func (ctr *controller) Save(c *gin.Context) model.Diary {
+// 	var dairy model.Diary
+// 	c.BindJSON(&dairy)
+// 	ctr.service.Save(dairy)
+// 	return dairy
+// }
+
+// func (ctr *controller) Show(c *gin.Context) model.Diary {
+// 	var dairy model.Diary
+// 	c.BindJSON(&dairy)
+// 	ctr.service.Show(dairy)
+// 	return dairy
+// }

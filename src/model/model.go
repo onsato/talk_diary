@@ -1,13 +1,33 @@
 package model
 
-type Users struct {
-	Uid  int    `json:"Uid"`
-	Name string `json:"name"`
+import(
+	gorm.io/gorm
+)
+
+// User model.
+type User struct {
+	gorm.Model
+	Account  string
+	Name     string
+	Password string
 }
 
-type Dairies struct {
-	Did   int    `json:"Did"`
-	Date  int    `json:"date"`
-	Title string `json:"title"`
-	Text  string `json:"text"`
+// Diary model.
+type Diary struct{
+	gorm.Model
+	UserId   int
+	Date     int
+	Title    string
+	TargetId int
+	Text     string
+}
+
+// Target model.
+type Target struct{
+	gorm.Model
+	UserId       int
+	Name         string
+	Birthday     int
+	Relationship string
+	Profile      string
 }
