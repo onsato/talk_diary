@@ -1,7 +1,7 @@
 package model
 
-import(
-	gorm.io/gorm
+import (
+	"gorm.io/gorm"
 )
 
 // User model.
@@ -13,7 +13,7 @@ type User struct {
 }
 
 // Diary model.
-type Diary struct{
+type Diary struct {
 	gorm.Model
 	UserId   int
 	Date     int
@@ -23,7 +23,7 @@ type Diary struct{
 }
 
 // Target model.
-type Target struct{
+type Target struct {
 	gorm.Model
 	UserId       int
 	Name         string

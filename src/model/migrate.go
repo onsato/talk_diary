@@ -1,18 +1,19 @@
-package data
+package model
 
-import(
-	gorm.io/gorm
-	gorm.io/driver/sqlite
-)
+// import (
+// 	"log"
 
-// Migrate program.
-func Migrate() {
-	db, err := gorm.Open(sqlite.Open("data.sqlite3"), &gorm.Config{})
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer db.Close()
+// 	"gorm.io/driver/sqlite"
+// 	"gorm.io/gorm"
+// )
 
-	db.AutoMigrate(&User{}, &Diary{}, &Target{})
-}
+// // Migrate program.
+// func Migrate() {
+// 	db, err := gorm.Open(sqlite.Open("data.sqlite3"), &gorm.Config{})
+// 	if err != nil {
+// 		log.Fatal(err)
+// 	}
+// 	defer db.Close()
 
+// 	db.AutoMigrate(&User{}, &Diary{}, &Target{})
+// }
